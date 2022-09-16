@@ -1,0 +1,133 @@
+:root {
+    --gap: 24px;
+    --gap-column: 0px;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body, .app {
+    width: 100%;
+    height: 100%;
+}
+.app {
+    display: grid;
+    column-gap: var(--gap-column);
+    row-gap: var(--gap);
+    transition: all 500ms;
+    grid-template-rows: 1fr 2fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "title"
+        "input"
+}
+.app.parsed {
+    --gap: 8px;
+    gap: var(--gap);
+    grid-template-rows: 1fr 2fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+        "title input detail"
+        "output output output";
+}
+section {
+    background: url('./bg.svg');
+    border-radius: calc(var(--gap) / 2);
+}
+.input, .detail {
+    overflow: auto;
+}
+.title {
+    grid-area: title;
+}
+.input {
+    background-color: rgba(255,0,0,0.06);
+    grid-area: input;
+}
+.detail {
+    display: none;
+    background-color: rgba(0,255,0,0.06);
+    grid-area: detail;
+}
+.output {
+    display: none;
+    background-color: rgba(0,0,255,0.06);
+    grid-area: output;
+}
+.parsed .output,
+.parsed .detail {
+    display: block;
+}
+.wrapper {
+    width: 60%;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+.parsed .wrapper {
+    width: 100%;
+}
+.logo {
+    margin: auto;
+}
+#svg-dropzone {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    outline: 2px dotted black;
+    outline-offset: -4px;
+    border-radius: calc(var(--gap) / 2);
+    transition: outline 50ms;
+}
+#svg-dropzone.active {
+    outline: 4px dashed orangered;
+}
+#svg-input {
+    display: none;
+}
+[for="svg-input"] svg {
+    width: 50px;
+    cursor: pointer;
+}
+#svg-text {
+    max-width: 13em;
+}
+#svg-parse {
+    flex: 1 1 auto;
+}
+
+.button {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: calc(var(--gap) / 2);
+    background: rgba(255,0,0,0.4);
+    cursor: pointer;
+    transition: background 200ms;
+    font-size: 2em;
+}
+.button:hover {
+    background: rgba(255,0,0,0.6);
+}
+
+.graph .node {
+    cursor: pointer;
+}
+.graph .node,
+.graph .link {
+    transition: opacity 500ms;
+}
+.graph .node.fade,
+.graph .link.fade {
+    transition: opacity 500ms;
+    opacity: 0.2;
+    stroke-width: 1;
+}
+.graph .node.highlight,
+.graph .link.highlight {
+    opacity: 1;
+    stroke-width: 3;
+}

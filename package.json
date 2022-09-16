@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "vite": "^3.1.1"
+  },
+  "dependencies": {
+    "d3-color": "^3.1.0",
+    "d3-sankey": "^0.12.3",
+    "d3-shape": "^3.1.0"
+  }
+}
